@@ -2,7 +2,7 @@ import 'package:r1a_portfolio/card_data.dart';
 
 const fakeQuestions = <CardData>[
   CardData(
-    question: "Has learnt to write a great essay in 2 hours",
+    question: "Has learnt how to write a great essay in 2 hours",
     answer: "Still learning",
     isFake: true
   ),
@@ -46,12 +46,12 @@ const trueQuestions = <CardData>[
   ),
   CardData(
     question: "Watched the same movie for three times",
-    answer: "It's the best way to find great evidence",
+    answer: "Repeatedly watching films is the best way to find great evidence",
     id: 5,
   ),
   CardData(
     question: "Developed a great essay title",
-    answer: "It was a great way to improve the understanding of the topic",
+    answer: "Working on the title helped me to improve my understanding of the essay's topic",
     id: 6,
   ),
   CardData(

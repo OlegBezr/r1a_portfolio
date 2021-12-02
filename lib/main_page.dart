@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:r1a_portfolio/app_state.dart';
+import 'package:r1a_portfolio/card_data.dart';
 import 'package:r1a_portfolio/questions.dart';
 import 'package:r1a_portfolio/results_page.dart';
 
 import 'flip_card.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({ Key? key }) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  late List<CardData> shuffledQuestions;
+
+  @override
+  void initState() {
+    super.initState();
+    shuffledQuestions = [
+      ...questions,
+    ];
+    shuffledQuestions.shuffle();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +32,6 @@ class MainPage extends StatelessWidget {
     var triesLeft = appState.triesLeft;
     var score = appState.score;
     var name = appState.name;
-    var shuffledQuestions = [
-      ...questions,
-    ];
-    shuffledQuestions.shuffle();
 
     return Scaffold(
       body: Padding(
@@ -84,11 +97,11 @@ class MainPage extends StatelessWidget {
               child: GridView.count(
                 crossAxisCount: 4,
                 children: List<Widget>.generate(
-                  questions.length, 
+                  shuffledQuestions.length, 
                   (int index) {
                     return FlipCard(
                       key: ValueKey(index),
-                      data: questions[index],
+                      data: shuffledQuestions[index],
                     );
                   }
                 ),
